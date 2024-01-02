@@ -1,0 +1,929 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AXNews API",
+    "description": "API for managing ax-news",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/noticias": {
+      "get": {
+        "summary": "Get all news",
+        "tags": ["noticias"],
+        "responses": {
+          "200": {
+            "description": "A list of news",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Noticia"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a news",
+        "tags": ["noticias"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Noticia"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The newly created news",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Noticia"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/noticias/{id}": {
+      "get": {
+        "summary": "Get news by ID",
+        "tags": ["noticias"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The news",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Noticia"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update news by ID",
+        "tags": ["noticias"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Noticia"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated news",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Noticia"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete news by ID",
+        "tags": ["noticias"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Noticia deleted successfully"
+          }
+        }
+      }
+    },
+    "/faleConnosco": {
+      "get": {
+        "summary": "Get all messages",
+        "tags": ["faleConnosco"],
+        "responses": {
+          "200": {
+            "description": "A list of messages",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FaleConnosco"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a message",
+        "tags": ["faleConnosco"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FaleConnosco"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The newly created message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FaleConnosco"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/faleConnosco/{id}": {
+      "get": {
+        "summary": "Get message by ID",
+        "tags": ["faleConnosco"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FaleConnosco"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update message by ID",
+        "tags": ["faleConnosco"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FaleConnosco"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated message",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FaleConnosco"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete message by ID",
+        "tags": ["faleConnosco"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mensagem deleted successfully"
+          }
+        }
+      }
+    },
+    "/servicoEquipamento": {
+      "get": {
+        "summary": "Get all records",
+        "tags": ["servicoEquipamento"],
+        "responses": {
+          "200": {
+            "description": "A list of servicoEquipamento",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ServicoEquipamento"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new record",
+        "tags": ["servicoEquipamento"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicoEquipamento"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The newly created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicoEquipamento"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/servicoEquipamento/{id}": {
+      "get": {
+        "summary": "Get record by ID",
+        "tags": ["servicoEquipamento"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicoEquipamento"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update record by ID",
+        "tags": ["servicoEquipamento"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicoEquipamento"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicoEquipamento"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete record by ID",
+        "tags": ["servicoEquipamento"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "record deleted successfully"
+          }
+        }
+      }
+    },
+    "/informacaoGeral": {
+      "get": {
+        "summary": "Get all records",
+        "tags": ["informacaoGeral"],
+        "responses": {
+          "200": {
+            "description": "A list of informacaoGeral",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InformacaoGeral"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new record",
+        "tags": ["informacaoGeral"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InformacaoGeral"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The newly created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InformacaoGeral"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/informacaoGeral/{id}": {
+      "get": {
+        "summary": "Get record by ID",
+        "tags": ["informacaoGeral"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InformacaoGeral"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update record by ID",
+        "tags": ["informacaoGeral"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InformacaoGeral"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InformacaoGeral"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete record by ID",
+        "tags": ["informacaoGeral"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "record deleted successfully"
+          }
+        }
+      }
+    },
+    "/redeSocial": {
+      "get": {
+        "summary": "Get all records",
+        "tags": ["redeSocial"],
+        "responses": {
+          "200": {
+            "description": "A list of redeSocial",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RedeSocial"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new record",
+        "tags": ["redeSocial"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeSocial"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The newly created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedeSocial"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/redeSocial/{id}": {
+      "get": {
+        "summary": "Get record by ID",
+        "tags": ["redeSocial"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedeSocial"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update record by ID",
+        "tags": ["redeSocial"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RedeSocial"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedeSocial"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete record by ID",
+        "tags": ["redeSocial"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "record deleted successfully"
+          }
+        }
+      }
+    },
+    "/categoria": {
+      "get": {
+        "summary": "Get all records",
+        "tags": ["categoria"],
+        "responses": {
+          "200": {
+            "description": "A list of categorias",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Categoria"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new record",
+        "tags": ["categoria"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Categoria"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The newly created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Categoria"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categoria/{id}": {
+      "get": {
+        "summary": "Get record by ID",
+        "tags": ["categoria"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Categoria"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update record by ID",
+        "tags": ["categoria"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Categoria"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Categoria"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete record by ID",
+        "tags": ["categoria"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "record deleted successfully"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Noticia": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "corpo": {
+            "type": "string"
+          },
+          "fotoCapa": {
+            "type": "string"
+          },
+          "autor": {
+            "type": "string"
+          },
+          "categorias": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "FaleConnosco": {
+        "type": "object",
+        "properties": {
+          "primeiroNome": {
+            "type": "string",
+            "nullable": true
+          },
+          "ultimoNome": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true,
+            "format": "email"
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "assunto": {
+            "type": "string",
+            "nullable": true
+          },
+          "mensagem": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ServicoEquipamento": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagem": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoRegisto": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "InformacaoGeral": {
+        "type": "object",
+        "properties": {
+          "descricaoEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "moradaEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefoneEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailEmpresa": {
+            "type": "string",
+            "nullable": true,
+            "format": "email"
+          }
+        }
+      },
+      "RedeSocial": {
+        "type": "object",
+        "properties": {
+          "linkedin": {
+            "type": "string",
+            "nullable": true
+          },
+          "facebook": {
+            "type": "string",
+            "nullable": true
+          },
+          "instagram": {
+            "type": "string",
+            "nullable": true
+          },
+          "tiktok": {
+            "type": "string",
+            "nullable": true
+          },
+          "snapchat": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Categoria": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      }
+    }
+  }
+}
